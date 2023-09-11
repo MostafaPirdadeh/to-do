@@ -11,6 +11,9 @@ function App() {
     const newCourseList=[...courseList,newCourse]
     setCourseList(newCourseList);
   }
+  const deleteCourse=(courseName)=>{
+    setCourseList(courseList.filter((course)=>courseName!==course))
+  }
   return (
     <div className="App">
       <div className="add-course">
@@ -18,7 +21,12 @@ function App() {
         <button onClick={addCourse}>Add Course</button>
       </div>
       {courseList.map((course)=>{
-        return <h1>{course}</h1>
+        return (
+        <div>
+        <h1>{course}</h1>
+        <button onClick={()=>deleteCourse(course)}>X</button>
+        </div>
+        )
       })}
       <div className='list'></div>
     </div>
